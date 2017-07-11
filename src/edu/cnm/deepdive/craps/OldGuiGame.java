@@ -15,7 +15,7 @@ import javax.swing.SwingUtilities;
  * @author David Martinez
  *
  */
-public class GuiGame {
+public class OldGuiGame {
 
 	JFrame frame;
 	ImageIcon[] dieFaces;
@@ -54,8 +54,8 @@ public class GuiGame {
 	}
 	
 	private void play() {
-		StateMachine croupier = new StateMachine();
-		croupier.setDisplay(new StateMachine.Display() {
+		StateMachineOld croupier = new StateMachineOld();
+		croupier.setDisplay(new StateMachineOld.Display() {
 			
 			@Override
 			public void update(int[] roll) {
@@ -65,7 +65,7 @@ public class GuiGame {
 				
 			}
 		});
-		croupier.setPlayable(new StateMachine.Playable() {
+		croupier.setPlayable(new StateMachineOld.Playable() {
 			
 			@Override
 			public boolean playAgain(int wins, int losses) {
@@ -73,7 +73,7 @@ public class GuiGame {
 				return false;
 			}
 		});
-		croupier.setContinuable(new StateMachine.Continuable() {
+		croupier.setContinuable(new StateMachineOld.Continuable() {
 		
 		@Override
 		public boolean continuePlay(int wins, int losses, int point) {
@@ -84,7 +84,7 @@ public class GuiGame {
 	}
 	
 	private static ImageIcon createImageIcon(String path) {
-		URL imgURL = GuiGame.class.getClassLoader().getResource(path);
+		URL imgURL = OldGuiGame.class.getClassLoader().getResource(path);
 		return new ImageIcon(imgURL);
 	}
 	
@@ -98,7 +98,7 @@ public class GuiGame {
 
 			@Override
 			public void run() {
-				GuiGame game = new GuiGame();
+				OldGuiGame game = new OldGuiGame();
 				game.createAndShowGui();
 			}
 			
